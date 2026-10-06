@@ -21,7 +21,6 @@ public class DataInitializer implements CommandLineRunner {
     private final CourseVideoRepository courseVideoRepository;
     private final QuestionRepository questionRepository;
     private final EnrollmentRepository enrollmentRepository;
-    private final org.springframework.core.env.Environment environment;
 
     @Autowired
     public DataInitializer(TeacherRepository teacherRepository,
@@ -30,8 +29,7 @@ public class DataInitializer implements CommandLineRunner {
                            StudentRepository studentRepository,
                            CourseVideoRepository courseVideoRepository,
                            QuestionRepository questionRepository,
-                           EnrollmentRepository enrollmentRepository,
-                           org.springframework.core.env.Environment environment) {
+                           EnrollmentRepository enrollmentRepository) {
         this.teacherRepository = teacherRepository;
         this.artClassRepository = artClassRepository;
         this.reviewRepository = reviewRepository;
@@ -39,17 +37,10 @@ public class DataInitializer implements CommandLineRunner {
         this.courseVideoRepository = courseVideoRepository;
         this.questionRepository = questionRepository;
         this.enrollmentRepository = enrollmentRepository;
-        this.environment = environment;
     }
 
     @Override
     public void run(String... args) {
-        String host = environment.getProperty("MYSQLHOST", "localhost");
-        String port = environment.getProperty("MYSQLPORT", "3306");
-        String db = environment.getProperty("MYSQLDATABASE", "artist_hub");
-        String user = environment.getProperty("MYSQLUSER", environment.getProperty("spring.datasource.username", "root"));
-        System.out.println(">>> Database Configuration Loaded:");
-        System.out.println(">>> Host: " + host + " | Port: " + port + " | Database: " + db + " | User: " + user);
         System.out.println(">>> Checking Artist Hub data initialization...");
 
         // 1. Initialize Teachers, Classes, Reviews if empty
