@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ARTIST HUB - College Mini Project</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon"><i class="fa-solid fa-palette"></i></span>
+                <div>
+                    <span class="fw-bold tracking-wide">ARTIST HUB</span>
+                    <span class="d-block small text-muted font-sans" style="font-size: 0.65rem; letter-spacing: 1px;">DISCOVER • LEARN • CREATE</span>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="classes.html">Classes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <button class="btn btn-primary-custom btn-sm px-3" onclick="joinFreeDoodlingClass()">
+                            <i class="fa-solid fa-gift me-1"></i> Join Free Class
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <section class="py-5 bg-white border-bottom">
+        <div class="container text-center">
+            <span class="section-subtitle">Academic College Mini Project</span>
+            <h1 class="display-5 fw-bold text-dark mb-2">About ARTIST HUB</h1>
+            <p class="text-muted max-w-600 mx-auto">
+                A Java-Based Artist Learning &amp; Teaching Platform designed to bridge the gap between creative mentors and aspiring students.
+            </p>
+        </div>
+    </section>
+
+    <!-- PROJECT PURPOSE & OBJECTIVES -->
+    <section class="container py-5">
+        <div class="row g-4 align-items-center mb-5">
+            <div class="col-lg-6">
+                <span class="badge bg-danger bg-opacity-10 text-danger fw-bold px-3 py-2 rounded-pill mb-2">Problem Statement &amp; Vision</span>
+                <h2 class="fw-bold text-dark mb-3">Empowering Aspiring Artists &amp; Teachers</h2>
+                <p class="text-muted">
+                    Traditional art education is often fragmented. Students struggle to find trustworthy mentors, clear fee structures, transparent course schedules, or accessible beginner workshops. At the same time, talented independent artists lack a dedicated platform to showcase their expertise and teach students.
+                </p>
+                <p class="text-muted">
+                    <strong>Artist Hub</strong> solves this by offering a clean, unified portal where students can discover teachers, explore online and offline classes across 4 key art categories (Painting, Sketching, Pastel, and Doodling), enroll in classes (including a free beginner session), and read authentic peer reviews.
+                </p>
+                <div class="row g-3 mt-2">
+                    <div class="col-sm-6">
+                        <div class="p-3 bg-white rounded-3 border">
+                            <h5 class="fw-bold text-primary mb-1">Simple Architecture</h5>
+                            <small class="text-muted">Layered Spring Boot REST API for easy viva explanation.</small>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="p-3 bg-white rounded-3 border">
+                            <h5 class="fw-bold text-success mb-1">Real-Time Data</h5>
+                            <small class="text-muted">Dynamic seat tracking, JPA relationships &amp; MySQL persistence.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="p-4 p-md-5 rounded-4 bg-white border shadow-sm">
+                    <h4 class="fw-bold text-dark mb-3">Core Objectives</h4>
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex align-items-start gap-3 mb-3">
+                            <i class="fa-solid fa-circle-check text-success fa-lg mt-1"></i>
+                            <div>
+                                <strong class="d-block text-dark">Teacher Discovery</strong>
+                                <span class="small text-muted">Browse verified artist mentors with bios, qualifications, and student ratings.</span>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3 mb-3">
+                            <i class="fa-solid fa-circle-check text-success fa-lg mt-1"></i>
+                            <div>
+                                <strong class="d-block text-dark">Class Catalog &amp; Filtering</strong>
+                                <span class="small text-muted">Filter by discipline (Painting, Sketching, Pastel, Doodling), mode (Online/Offline), and level.</span>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3 mb-3">
+                            <i class="fa-solid fa-circle-check text-success fa-lg mt-1"></i>
+                            <div>
+                                <strong class="d-block text-dark">Free Beginner Class</strong>
+                                <span class="small text-muted">Encourage art adoption with a completely free ₹0 Beginner Doodling Class.</span>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3 mb-3">
+                            <i class="fa-solid fa-circle-check text-success fa-lg mt-1"></i>
+                            <div>
+                                <strong class="d-block text-dark">Enrollment &amp; Capacity Control</strong>
+                                <span class="small text-muted">Prevent overbooking by validating maximum students and tracking available seats.</span>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-success fa-lg mt-1"></i>
+                            <div>
+                                <strong class="d-block text-dark">Community Ratings &amp; Reviews</strong>
+                                <span class="small text-muted">Allow students to publish star ratings and constructive feedback.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEARN. CREATE. SHARE. COMMUNITY SECTION -->
+        <div class="section-header text-center mt-5 mb-4">
+            <span class="section-subtitle">Our Creative Philosophy</span>
+            <h2 class="section-title">Learn. Create. Share.</h2>
+            <p class="section-desc">Artist Hub is built on three guiding principles designed to unlock creativity in everyone, regardless of prior experience.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="p-4 p-lg-5 bg-white rounded-4 border text-center h-100 shadow-sm">
+                    <div class="rounded-circle bg-danger bg-opacity-10 text-danger d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                        <i class="fa-solid fa-graduation-cap fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-2">Learn</h4>
+                    <p class="small text-muted mb-0">
+                        Access structured, 4-lesson curriculum pathways created by recognized fine art scholars. From fundamental strokes to advanced techniques, master disciplines at your own pace.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 p-lg-5 bg-white rounded-4 border text-center h-100 shadow-sm">
+                    <div class="rounded-circle bg-warning bg-opacity-10 text-warning d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                        <i class="fa-solid fa-palette fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-2">Create</h4>
+                    <p class="small text-muted mb-0">
+                        Put theory into practice with guided hands-on canvas projects, sketchbook challenges, and tactile pastel landscapes that build real confidence with real tools.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 p-lg-5 bg-white rounded-4 border text-center h-100 shadow-sm">
+                    <div class="rounded-circle bg-success bg-opacity-10 text-success d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                        <i class="fa-solid fa-heart fa-2x"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark mb-2">Share</h4>
+                    <p class="small text-muted mb-0">
+                        Connect with fellow art enthusiasts, ask direct questions to instructors in our Q&amp;A forum, and celebrate artistic milestones in a welcoming, encouraging community.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FREQUENTLY ASKED QUESTIONS -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-header text-center mb-4">
+                    <span class="section-subtitle">Viva &amp; Presentation Help</span>
+                    <h3 class="section-title">Frequently Asked Questions</h3>
+                </div>
+
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item border rounded-3 mb-3 overflow-hidden">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                How does the frontend communicate with Spring Boot?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small">
+                                The frontend uses modern asynchronous JavaScript <code>fetch()</code> API to make HTTP requests (GET, POST) to Spring Boot <code>@RestController</code> endpoints (e.g., <code>/api/classes</code>, <code>/api/enrollments</code>). Data is exchanged using standard JSON.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border rounded-3 mb-3 overflow-hidden">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                How does Hibernate create tables in MySQL?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small">
+                                With the property <code>spring.jpa.hibernate.ddl-auto=update</code>, Hibernate inspects all entity classes (<code>@Entity</code> like Teacher, ArtClass, Enrollment) and automatically maps Java fields into corresponding database columns, tables, and foreign keys when the application boots.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border rounded-3 mb-3 overflow-hidden">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                How are overbookings prevented during enrollment?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small">
+                                Inside <code>EnrollmentService.java</code>, before creating an enrollment record, the service checks <code>enrolledStudents &gt;= maxStudents</code>. If full, it throws an <code>IllegalStateException</code>, and the controller returns an HTTP 400 Bad Request with an informative error message.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border rounded-3 overflow-hidden">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                How is sample data loaded without duplicate entries?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted small">
+                                The <code>DataInitializer</code> component implements Spring Boot's <code>CommandLineRunner</code>. At startup, it checks <code>if (teacherRepository.count() == 0)</code> before inserting sample mentors, classes, and reviews, ensuring existing data is never duplicated on restarts.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REUSABLE ENROLLMENT MODAL -->
+    <div class="modal fade" id="enrollmentModal" tabindex="-1" aria-labelledby="enrollmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title fw-bold" id="enrollmentModalLabel">Enroll in Art Class</h5>
+                        <p class="small text-muted mb-0">Fill your details below to reserve your seat</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-light border d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <span class="small text-muted d-block">Selected Course</span>
+                            <strong id="enrollmentModalClassTitle" class="text-dark">Art Class</strong>
+                        </div>
+                        <div id="enrollmentModalClassFee">
+                            <span class="badge bg-success">FREE</span>
+                        </div>
+                    </div>
+
+                    <form id="enrollmentForm">
+                        <input type="hidden" id="enrollmentClassId" value="">
+                        <div class="mb-3">
+                            <label for="studentName" class="form-label fw-semibold small">Full Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-custom" id="studentName" placeholder="e.g. Priyam Yana" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="studentEmail" class="form-label fw-semibold small">Email Address <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control form-control-custom" id="studentEmail" placeholder="e.g. student@example.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="studentPhone" class="form-label fw-semibold small">Phone Number <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control form-control-custom" id="studentPhone" placeholder="e.g. +91 9876543210" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary-custom" id="enrollmentSubmitBtn">
+                                <i class="fa-solid fa-check me-2"></i>Confirm Enrollment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-custom">
+        <div class="container text-center">
+            <p class="mb-1 fw-bold text-white">ARTIST HUB - College Mini Project</p>
+            <p class="small text-muted mb-0">Built with Java 17, Spring Boot, MySQL &amp; Bootstrap. © 2026 Artist Hub.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/enrollment.js"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Reviews &amp; Ratings - ARTIST HUB</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon"><i class="fa-solid fa-palette"></i></span>
+                <div>
+                    <span class="fw-bold tracking-wide">ARTIST HUB</span>
+                    <span class="d-block small text-muted font-sans" style="font-size: 0.65rem; letter-spacing: 1px;">DISCOVER • LEARN • CREATE</span>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="classes.html">Classes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="reviews.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <button class="btn btn-primary-custom btn-sm px-3" onclick="joinFreeDoodlingClass()">
+                            <i class="fa-solid fa-gift me-1"></i> Join Free Class
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER & STATS -->
+    <section class="py-5 bg-white border-bottom">
+        <div class="container text-center">
+            <span class="section-subtitle">Real Student Experiences</span>
+            <h1 class="display-5 fw-bold text-dark mb-2">Reviews &amp; Community Feedback</h1>
+            <p class="text-muted max-w-600 mx-auto">
+                Read what fellow art students have experienced in our classes and share your own learning journey.
+            </p>
+
+            <!-- Overall Review Score Banner -->
+            <div class="d-inline-flex align-items-center gap-3 p-3 px-4 rounded-4 bg-light border mt-3 shadow-sm">
+                <div>
+                    <span class="display-6 fw-bold text-dark" id="avgRatingValue">4.9</span>
+                    <span class="text-muted small">/ 5.0</span>
+                </div>
+                <div class="border-start ps-3 text-start">
+                    <div id="avgRatingStars" class="text-warning fs-5">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <small class="text-muted fw-semibold" id="totalReviewsCount">Loading reviews...</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN SECTION: WRITE REVIEW & REVIEWS GRID -->
+    <section class="container py-5">
+        <div class="row g-4 mb-5 justify-content-center">
+            <!-- Review Submission Form Card -->
+            <div class="col-lg-8">
+                <div class="p-4 p-md-5 rounded-4 bg-white border shadow-sm">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="rounded-3 p-3 bg-danger bg-opacity-10 text-danger">
+                            <i class="fa-solid fa-pen-nib fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4 class="fw-bold mb-0 text-dark">Share Your Art Journey</h4>
+                            <p class="text-muted small mb-0">Help future students pick the right class and teacher</p>
+                        </div>
+                    </div>
+
+                    <form id="reviewForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="reviewStudentName" class="form-label small fw-semibold text-muted">Your Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control-custom" id="reviewStudentName" placeholder="e.g. Priya Sharma" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reviewClassName" class="form-label small fw-semibold text-muted">Art Class Taken <span class="text-danger">*</span></label>
+                                <select id="reviewClassName" class="form-select form-select-custom" required>
+                                    <option value="">-- Select Class Taken --</option>
+                                    <option value="Beginner Doodling Class">Beginner Doodling Class (FREE)</option>
+                                    <option value="Beginner Painting: Acrylic on Canvas">Beginner Painting: Acrylic on Canvas</option>
+                                    <option value="Sketching Basics: Lines, Shapes & Shadows">Sketching Basics: Lines, Shapes & Shadows</option>
+                                    <option value="Pastel Art Workshop: Sunset Landscapes">Pastel Art Workshop: Sunset Landscapes</option>
+                                    <option value="Advanced Oil Painting & Canvas Glazing">Advanced Oil Painting & Canvas Glazing</option>
+                                    <option value="Realistic Portrait Sketching Masterclass">Realistic Portrait Sketching Masterclass</option>
+                                    <option value="Soft Pastel Floral & Botanical Art">Soft Pastel Floral & Botanical Art</option>
+                                    <option value="Intermediate Character Doodling & Comics">Intermediate Character Doodling & Comics</option>
+                                    <option value="Modern Acrylic Knife Art">Modern Acrylic Knife Art</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small fw-semibold text-muted mb-1">Your Rating (1 to 5 Stars) <span class="text-danger">*</span></label>
+                                <div class="star-rating-select" id="starPicker">
+                                    <i class="fa-solid fa-star active" data-value="1" title="1 Star"></i>
+                                    <i class="fa-solid fa-star active" data-value="2" title="2 Stars"></i>
+                                    <i class="fa-solid fa-star active" data-value="3" title="3 Stars"></i>
+                                    <i class="fa-solid fa-star active" data-value="4" title="4 Stars"></i>
+                                    <i class="fa-solid fa-star active" data-value="5" title="5 Stars"></i>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="reviewComment" class="form-label small fw-semibold text-muted">Your Review &amp; Experience <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="reviewComment" rows="4" style="border-radius: 16px; border: 1px solid #ede8e1;" placeholder="Describe how the instructor taught, what you learned, and how it helped your artistic skills..." required></textarea>
+                            </div>
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-primary-custom" id="reviewSubmitBtn">
+                                    <i class="fa-solid fa-paper-plane me-2"></i>Post Review
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- REVIEWS LISTING HEADER -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="fw-bold text-dark mb-0">Student Testimonials</h4>
+            <span class="text-muted small">Real feedback from verified students</span>
+        </div>
+
+        <!-- REVIEWS GRID -->
+        <div class="row" id="reviewsGrid">
+            <!-- Dynamically populated via reviews.js -->
+        </div>
+    </section>
+
+    <!-- REUSABLE ENROLLMENT MODAL -->
+    <div class="modal fade" id="enrollmentModal" tabindex="-1" aria-labelledby="enrollmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title fw-bold" id="enrollmentModalLabel">Enroll in Art Class</h5>
+                        <p class="small text-muted mb-0">Fill your details below to reserve your seat</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-light border d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <span class="small text-muted d-block">Selected Course</span>
+                            <strong id="enrollmentModalClassTitle" class="text-dark">Art Class</strong>
+                        </div>
+                        <div id="enrollmentModalClassFee">
+                            <span class="badge bg-success">FREE</span>
+                        </div>
+                    </div>
+
+                    <form id="enrollmentForm">
+                        <input type="hidden" id="enrollmentClassId" value="">
+                        <div class="mb-3">
+                            <label for="studentName" class="form-label fw-semibold small">Full Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-custom" id="studentName" placeholder="e.g. Priyam Yana" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="studentEmail" class="form-label fw-semibold small">Email Address <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control form-control-custom" id="studentEmail" placeholder="e.g. student@example.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="studentPhone" class="form-label fw-semibold small">Phone Number <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control form-control-custom" id="studentPhone" placeholder="e.g. +91 9876543210" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary-custom" id="enrollmentSubmitBtn">
+                                <i class="fa-solid fa-check me-2"></i>Confirm Enrollment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-custom">
+        <div class="container text-center">
+            <p class="mb-1 fw-bold text-white">ARTIST HUB - College Mini Project</p>
+            <p class="small text-muted mb-0">Built with Java 17, Spring Boot, MySQL &amp; Bootstrap. © 2026 Artist Hub.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/enrollment.js"></script>
+    <script src="js/reviews.js"></script>
+</body>
+</html>

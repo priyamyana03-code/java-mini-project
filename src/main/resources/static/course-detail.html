@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details &amp; Video Lessons - ARTIST HUB</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .lesson-item {
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 0.6rem;
+            background: #fff;
+            border: 1px solid var(--border-color);
+        }
+        .lesson-item:hover {
+            transform: translateX(4px);
+            border-color: var(--primary-color);
+        }
+        .lesson-item.active {
+            border-left: 5px solid var(--primary-color);
+            background: #fff8f6;
+            border-color: #f7cfc8;
+        }
+        .lesson-item.locked {
+            background: #fbfbfb;
+            opacity: 0.85;
+        }
+        .lesson-item.locked:hover {
+            border-color: #f59e0b;
+            background: #fffdfa;
+        }
+        .video-player-box {
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+        .video-player-box video {
+            width: 100%;
+            max-height: 460px;
+            display: block;
+            background-color: #000;
+        }
+        .locked-video-overlay {
+            min-height: 380px;
+            background: linear-gradient(135deg, #1e202f 0%, #2b2d42 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 20px;
+        }
+        .supply-check-item {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            height: 100%;
+            transition: transform 0.2s;
+        }
+        .supply-check-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon"><i class="fa-solid fa-palette"></i></span>
+                <div>
+                    <span class="fw-bold tracking-wide">ARTIST HUB</span>
+                    <span class="d-block small text-muted font-sans" style="font-size: 0.65rem; letter-spacing: 1px;">DISCOVER • LEARN • CREATE</span>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="classes.html">Classes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. COURSE HERO & HEADER -->
+    <section class="py-5 bg-white border-bottom">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <div class="d-flex flex-wrap gap-2 mb-2" id="courseBadgesHeader">
+                        <span class="badge bg-light text-dark border">Loading...</span>
+                    </div>
+                    <h1 class="display-6 fw-bold text-dark mb-3" id="courseDetailTitle">Course Title</h1>
+                    <p class="text-muted fs-6 mb-4" id="courseDetailDesc">Loading course curriculum and description...</p>
+
+                    <!-- Instructor Row -->
+                    <div class="d-flex align-items-center gap-3 p-3 bg-light rounded-4 border mb-3">
+                        <img id="courseTeacherImg" src="" alt="Teacher" class="rounded-circle object-fit-cover shadow-sm" style="width: 55px; height: 55px;">
+                        <div>
+                            <span class="small text-muted d-block font-sans">Lead Art Mentor</span>
+                            <h6 class="mb-0 fw-bold text-dark" id="courseTeacherName">Teacher Name</h6>
+                            <small class="text-primary fw-semibold" id="courseTeacherSpec">Specialization</small>
+                            <span class="text-muted small ms-2" id="courseTeacherExp"></span>
+                        </div>
+                        <div class="ms-auto text-end">
+                            <div class="star-rating mb-0" id="courseRatingStars"></div>
+                            <span class="small fw-bold text-dark" id="courseRatingValue">4.9 ★</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Action Card -->
+                <div class="col-lg-4">
+                    <div class="p-4 rounded-4 bg-light border shadow-sm">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted small font-sans">Tuition Fee</span>
+                            <div id="courseFeeDisplay" class="fw-bold fs-3"></div>
+                        </div>
+
+                        <ul class="list-unstyled small text-muted mb-4">
+                            <li class="mb-2 d-flex justify-content-between">
+                                <span><i class="fa-regular fa-clock text-primary me-2"></i>Duration:</span>
+                                <strong class="text-dark" id="courseDuration">4 Weeks</strong>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between">
+                                <span><i class="fa-solid fa-layer-group text-primary me-2"></i>Curriculum:</span>
+                                <strong class="text-dark">4 Video Lessons</strong>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between">
+                                <span><i class="fa-regular fa-calendar text-primary me-2"></i>Start Date:</span>
+                                <strong class="text-dark" id="courseDate">Upcoming</strong>
+                            </li>
+                            <li class="mb-2 d-flex justify-content-between">
+                                <span><i class="fa-solid fa-users text-primary me-2"></i>Seat Status:</span>
+                                <span id="courseSeatsStatus">Checking...</span>
+                            </li>
+                            <li class="d-flex justify-content-between" id="courseLocationRow">
+                                <span><i class="fa-solid fa-map-pin text-danger me-2"></i>Location:</span>
+                                <span class="fw-semibold text-dark" id="courseLocation">Online</span>
+                            </li>
+                        </ul>
+
+                        <div id="courseActionBtnContainer">
+                            <button class="btn btn-primary-custom w-100 py-2 fs-6" id="primaryActionBtn" onclick="handleEnrollOrBuyClick()">
+                                <i class="fa-solid fa-cart-shopping me-2"></i>Buy Course
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. COURSE VIDEOS / LESSON LEARNING SECTION -->
+    <section class="container py-5">
+        <div class="section-header mb-4">
+            <span class="section-subtitle">Video Curriculum</span>
+            <h3 class="fw-bold text-dark mb-1">Course Videos &amp; Lessons</h3>
+            <p class="text-muted small">Watch 4 structured step-by-step video lessons taught by your mentor.</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Video Player Column -->
+            <div class="col-lg-7">
+                <div class="video-player-box mb-3" id="videoPlayerBox">
+                    <video id="courseVideoPlayer" controls playsinline poster="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80">
+                        <source id="videoSource" src="" type="video/mp4">
+                        Your browser does not support the HTML5 video element.
+                    </video>
+                </div>
+
+                <!-- Locked Video Notice Placeholder (Shown when user clicks locked video) -->
+                <div class="locked-video-overlay d-none mb-3" id="lockedVideoNotice">
+                    <div class="rounded-circle bg-warning bg-opacity-10 text-warning d-inline-flex align-items-center justify-content-center mb-3" style="width: 75px; height: 75px;">
+                        <i class="fa-solid fa-lock fa-3x"></i>
+                    </div>
+                    <h4 class="fw-bold text-white mb-2">This Lesson is Locked</h4>
+                    <p class="text-light opacity-75 max-w-500 mb-4" id="lockedNoticeMessage">
+                        Purchase this course to unlock all 4 lessons, practice files, and instructor guidance.
+                    </p>
+                    <button class="btn btn-warning btn-lg rounded-pill px-5 fw-bold text-dark shadow" onclick="openDemoPaymentModal()">
+                        <i class="fa-solid fa-bolt me-2"></i>Buy Course to Unlock
+                    </button>
+                </div>
+
+                <!-- Video Meta Info -->
+                <div class="p-3 bg-white rounded-4 border shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="badge bg-primary bg-opacity-10 text-primary fw-bold" id="activeLessonBadge">Lesson 1</span>
+                        <span class="small text-muted"><i class="fa-regular fa-clock me-1"></i><span id="activeLessonDuration">15 Mins</span></span>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2" id="activeLessonTitle">Lesson Title</h5>
+                    <p class="small text-muted mb-0" id="activeLessonDesc">Lesson description details.</p>
+                </div>
+            </div>
+
+            <!-- Lessons Playlist Column -->
+            <div class="col-lg-5">
+                <div class="p-3 bg-white rounded-4 border shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                        <h6 class="fw-bold text-dark mb-0"><i class="fa-solid fa-list-check text-primary me-2"></i>Lesson Playlist (4 Lessons)</h6>
+                        <span class="small text-muted" id="accessStatusBadge"><span class="badge bg-secondary">Checking...</span></span>
+                    </div>
+
+                    <div id="lessonsListContainer">
+                        <div class="text-center py-4">
+                            <div class="spinner-border spinner-border-sm text-primary"></div>
+                            <span class="small text-muted ms-2">Loading lessons...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ASK A QUESTION (Q&A) SECTION -->
+    <section class="container py-4">
+        <div class="p-4 p-md-5 bg-white rounded-4 border shadow-sm mb-5">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="rounded-3 p-3 bg-primary bg-opacity-10 text-primary">
+                    <i class="fa-solid fa-comments fa-2x"></i>
+                </div>
+                <div>
+                    <h4 class="fw-bold text-dark mb-0">Ask a Question</h4>
+                    <p class="text-muted small mb-0">Have doubts about this technique or materials? Ask your instructor directly.</p>
+                </div>
+            </div>
+
+            <!-- Question Form -->
+            <form id="askQuestionForm" class="mb-4">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="qStudentName" class="form-label small fw-semibold text-muted">Your Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control form-control-custom" id="qStudentName" placeholder="e.g. Priyam Yana" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="qStudentEmail" class="form-label small fw-semibold text-muted">Your Email</label>
+                        <input type="email" class="form-control form-control-custom" id="qStudentEmail" placeholder="student@example.com">
+                    </div>
+                    <div class="col-12">
+                        <label for="qQuestionText" class="form-label small fw-semibold text-muted">Your Question <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="qQuestionText" rows="3" style="border-radius: 14px; border: 1px solid var(--border-color);" placeholder="Type your question about color mixing, brushwork, paper GSM, or techniques..." required></textarea>
+                    </div>
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary-custom" id="askQuestionSubmitBtn">
+                            <i class="fa-solid fa-paper-plane me-2"></i>Submit Question
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <hr class="my-4">
+
+            <!-- Question History -->
+            <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-circle-question text-primary me-2"></i>Class Questions &amp; Mentor Answers</h6>
+            <div id="questionsListContainer" class="d-flex flex-column gap-3">
+                <p class="text-muted small">Loading questions...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. RECOMMENDED ART SUPPLIES SECTION -->
+    <section class="container py-4">
+        <div class="section-header text-center mb-4">
+            <span class="section-subtitle">Recommended Tools</span>
+            <h3 class="fw-bold text-dark mb-1">Recommended Art Supplies for this Course</h3>
+            <p class="text-muted small">Materials handpicked by the instructor for maximum practice effectiveness.</p>
+        </div>
+
+        <div class="row g-3" id="courseSuppliesGrid">
+            <!-- Dynamically populated based on course category -->
+        </div>
+    </section>
+
+    <!-- 5. REVIEWS & RATINGS SECTION -->
+    <section class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <span class="section-subtitle">Student Testimonials</span>
+                <h4 class="fw-bold text-dark mb-0">Reviews from Students</h4>
+            </div>
+            <a href="reviews.html" class="btn btn-outline-custom btn-sm">
+                <i class="fa-solid fa-pen-nib me-1"></i> Write a Review
+            </a>
+        </div>
+
+        <div class="row g-4" id="courseReviewsRow">
+            <p class="text-muted small">Loading student reviews...</p>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         DEMO PAYMENT MODAL (DEMO PURCHASE FLOW)
+         ================================================================ -->
+    <div class="modal fade" id="demoPaymentModal" tabindex="-1" aria-labelledby="demoPaymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <div>
+                        <span class="badge bg-warning text-dark fw-bold mb-1"><i class="fa-solid fa-flask me-1"></i> COLLEGE DEMO CHECKOUT</span>
+                        <h5 class="modal-title fw-bold text-dark" id="demoPaymentModalLabel">Complete Course Enrollment</h5>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <!-- Order Summary Box -->
+                    <div class="p-3 bg-light rounded-4 border mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="small text-muted font-sans">Course</span>
+                            <strong class="text-dark" id="payModalCourseName">Course Title</strong>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="small text-muted font-sans">Student</span>
+                            <strong class="text-dark" id="payModalStudentName">Student Name</strong>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center pt-2 border-top mt-2">
+                            <span class="fw-bold text-dark">Total Amount Due</span>
+                            <span class="fw-bold fs-4 text-success" id="payModalAmount">₹499</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method Selector -->
+                    <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-credit-card text-primary me-2"></i>Select Payment Method</h6>
+                    <div class="row g-2 mb-4">
+                        <div class="col-6 col-sm-3">
+                            <input type="radio" class="btn-check" name="payMethod" id="methodUPI" value="UPI" checked onchange="updatePaymentFields('UPI')">
+                            <label class="btn btn-outline-secondary w-100 py-2 rounded-3 text-center" for="methodUPI">
+                                <i class="fa-solid fa-mobile-screen-button d-block mb-1 fs-5"></i>
+                                <span class="small fw-semibold">UPI</span>
+                            </label>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <input type="radio" class="btn-check" name="payMethod" id="methodDebit" value="Debit Card" onchange="updatePaymentFields('Card')">
+                            <label class="btn btn-outline-secondary w-100 py-2 rounded-3 text-center" for="methodDebit">
+                                <i class="fa-solid fa-credit-card d-block mb-1 fs-5"></i>
+                                <span class="small fw-semibold">Debit Card</span>
+                            </label>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <input type="radio" class="btn-check" name="payMethod" id="methodCredit" value="Credit Card" onchange="updatePaymentFields('Card')">
+                            <label class="btn btn-outline-secondary w-100 py-2 rounded-3 text-center" for="methodCredit">
+                                <i class="fa-regular fa-credit-card d-block mb-1 fs-5"></i>
+                                <span class="small fw-semibold">Credit Card</span>
+                            </label>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <input type="radio" class="btn-check" name="payMethod" id="methodNet" value="Net Banking" onchange="updatePaymentFields('Net')">
+                            <label class="btn btn-outline-secondary w-100 py-2 rounded-3 text-center" for="methodNet">
+                                <i class="fa-solid fa-building-columns d-block mb-1 fs-5"></i>
+                                <span class="small fw-semibold">Net Banking</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Payment Fields Form -->
+                    <form id="demoPaymentForm">
+                        <!-- UPI Container -->
+                        <div id="upiFieldsContainer" class="mb-3">
+                            <label for="payUpiId" class="form-label small fw-semibold text-muted">UPI ID / VPA <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fa-solid fa-at text-muted"></i></span>
+                                <input type="text" class="form-control form-control-custom" id="payUpiId" placeholder="e.g. student@okhdfcbank" value="priyam@okaxis">
+                            </div>
+                            <small class="text-muted mt-1 d-block">Demo UPI ID (Instant simulation)</small>
+                        </div>
+
+                        <!-- Card Container -->
+                        <div id="cardFieldsContainer" class="d-none mb-3">
+                            <div class="mb-3">
+                                <label for="payCardNumber" class="form-label small fw-semibold text-muted">Card Number</label>
+                                <input type="text" class="form-control form-control-custom" id="payCardNumber" placeholder="4532 •••• •••• 8912" value="4532 8899 1234 5678">
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <label for="payCardHolder" class="form-label small fw-semibold text-muted">Card Holder</label>
+                                    <input type="text" class="form-control form-control-custom" id="payCardHolder" placeholder="Name on card" value="Priyam Yana">
+                                </div>
+                                <div class="col-3">
+                                    <label for="payExpiry" class="form-label small fw-semibold text-muted">Expiry</label>
+                                    <input type="text" class="form-control form-control-custom" id="payExpiry" placeholder="MM/YY" value="12/28">
+                                </div>
+                                <div class="col-3">
+                                    <label for="payCvv" class="form-label small fw-semibold text-muted">CVV</label>
+                                    <input type="password" class="form-control form-control-custom" id="payCvv" placeholder="•••" value="123" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Net Banking Container -->
+                        <div id="netFieldsContainer" class="d-none mb-3">
+                            <label for="payBankSelect" class="form-label small fw-semibold text-muted">Select Bank</label>
+                            <select id="payBankSelect" class="form-select form-select-custom">
+                                <option value="State Bank of India">State Bank of India (SBI)</option>
+                                <option value="HDFC Bank">HDFC Bank</option>
+                                <option value="ICICI Bank">ICICI Bank</option>
+                                <option value="Axis Bank">Axis Bank</option>
+                                <option value="Punjab National Bank">Punjab National Bank</option>
+                            </select>
+                        </div>
+
+                        <div class="alert alert-info border-0 rounded-3 small py-2 d-flex align-items-center gap-2 mb-4">
+                            <i class="fa-solid fa-shield-halved text-primary fa-lg"></i>
+                            <span><strong>Demo Payment Sandbox:</strong> No actual money is charged. Real credentials are never stored.</span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary-custom py-2 fs-6" id="submitDemoPaymentBtn">
+                                <i class="fa-solid fa-check-circle me-2"></i>Confirm Demo Payment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
+         PAYMENT SUCCESS MODAL
+         ================================================================ -->
+    <div class="modal fade" id="paymentSuccessModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center p-4">
+                <div class="modal-body">
+                    <div class="rounded-circle bg-success bg-opacity-10 text-success d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fa-solid fa-circle-check fa-3x"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark mb-1">Payment Successful!</h3>
+                    <p class="text-muted small mb-4" id="successMessage">
+                        Congratulations! You have successfully enrolled in this course.
+                    </p>
+
+                    <div class="p-3 bg-light rounded-4 border text-start mb-4 small">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted">Course:</span>
+                            <strong class="text-dark" id="successCourseName">Course Title</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted">Amount Paid:</span>
+                            <strong class="text-success" id="successAmount">₹499</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="text-muted">Transaction ID:</span>
+                            <span class="font-monospace fw-bold text-dark" id="successTxnId">TXN-ART-123456</span>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary-custom" onclick="closeSuccessAndStartLearning()">
+                            <i class="fa-solid fa-play me-2"></i>Start Learning Now
+                        </button>
+                        <a href="profile.html#my-courses" class="btn btn-outline-secondary rounded-pill btn-sm">
+                            View in My Courses
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-custom">
+        <div class="container text-center">
+            <p class="mb-1 fw-bold text-white">ARTIST HUB - College Mini Project</p>
+            <p class="small text-muted mb-0">Built with Java 17, Spring Boot, MySQL &amp; Bootstrap. © 2026 Artist Hub.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Page Specific Script -->
+    <script>
+        let currentClassId = null;
+        let currentClassData = null;
+        let currentLessons = [];
+        let isEnrolled = false;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            currentClassId = params.get('id');
+
+            if (!currentClassId) {
+                // Default to course 1
+                currentClassId = 1;
+            }
+
+            await loadCourseDetails();
+            await checkEnrollmentStatus();
+            await loadCourseVideos();
+            await loadQuestions();
+            await loadCourseReviews();
+            setupQuestionForm();
+            setupPaymentForm();
+        });
+
+        // 1. Load Course Metadata
+        async function loadCourseDetails() {
+            try {
+                const res = await fetch(`${API_BASE}/classes/${currentClassId}`);
+                if (!res.ok) throw new Error('Class not found');
+                const c = await res.json();
+                currentClassData = c;
+
+                document.title = `${c.name} - ARTIST HUB`;
+                document.getElementById('courseDetailTitle').textContent = c.name;
+                document.getElementById('courseDetailDesc').textContent = c.description || '';
+                document.getElementById('courseDuration').textContent = `${c.duration || 'Flexible'} (${c.sessions || 4} Sessions)`;
+                document.getElementById('courseDate').textContent = c.date || 'Self-Paced / Live';
+
+                // Badges
+                document.getElementById('courseBadgesHeader').innerHTML = `
+                    ${getCategoryBadge(c.category)}
+                    ${getModeBadge(c.mode)}
+                    <span class="badge bg-light text-dark border">${c.level}</span>
+                `;
+
+                // Fee Display
+                document.getElementById('courseFeeDisplay').innerHTML = formatFee(c.fee);
+
+                // Location / Mode
+                const isOnline = (c.mode || '').toLowerCase() === 'online';
+                if (isOnline) {
+                    document.getElementById('courseLocation').innerHTML = `<span class="badge bg-info-subtle text-info border">Online Zoom Studio</span>`;
+                } else {
+                    document.getElementById('courseLocation').innerHTML = `<span class="badge bg-warning-subtle text-warning border">${c.address || ''}, ${c.city || 'Studio'}</span>`;
+                }
+
+                // Teacher
+                if (c.teacher) {
+                    document.getElementById('courseTeacherImg').src = c.teacher.profileImage || '';
+                    document.getElementById('courseTeacherName').textContent = c.teacher.name;
+                    document.getElementById('courseTeacherSpec').textContent = c.teacher.specialization;
+                    document.getElementById('courseTeacherExp').textContent = `• ${c.teacher.experience}`;
+                    document.getElementById('courseRatingStars').innerHTML = getStarRatingHtml(c.teacher.rating);
+                    document.getElementById('courseRatingValue').textContent = `${c.teacher.rating} ★`;
+                }
+
+                // Seats status
+                const availableSeats = c.availableSeats !== undefined ? c.availableSeats : Math.max(0, (c.maxStudents || 0) - (c.enrolledStudents || 0));
+                document.getElementById('courseSeatsStatus').innerHTML = getSeatsBadge(availableSeats, c.maxStudents);
+
+                // Render Supplies based on category
+                renderSupplies(c.category);
+            } catch (err) {
+                console.error('Error loading course:', err);
+                showNotification('Course not found.', 'error');
+            }
+        }
+
+        // 2. Check Enrollment Status for Current User
+        async function checkEnrollmentStatus() {
+            const user = getCurrentUser();
+            const isFree = (currentClassData && (currentClassData.fee === null || currentClassData.fee === 0));
+
+            if (!user) {
+                isEnrolled = false;
+                updateActionButton(false, isFree);
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/enrollments/check?email=${encodeURIComponent(user.email)}&classId=${currentClassId}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    isEnrolled = data.enrolled;
+                }
+            } catch (e) {
+                console.error('Check enrollment error:', e);
+            }
+
+            updateActionButton(isEnrolled, isFree);
+        }
+
+        function updateActionButton(enrolled, isFree) {
+            const container = document.getElementById('courseActionBtnContainer');
+            if (!container) return;
+
+            if (enrolled) {
+                container.innerHTML = `
+                    <div class="alert alert-success border-0 rounded-pill py-2 text-center fw-semibold small mb-0">
+                        <i class="fa-solid fa-circle-check me-1"></i> You are Enrolled in this Course
+                    </div>
+                `;
+            } else if (isFree) {
+                container.innerHTML = `
+                    <button class="btn btn-success w-100 py-2 fs-6 rounded-pill" onclick="handleEnrollOrBuyClick()">
+                        <i class="fa-solid fa-gift me-2"></i> Join Free Class (₹0)
+                    </button>
+                `;
+            } else {
+                container.innerHTML = `
+                    <button class="btn btn-primary-custom w-100 py-2 fs-6" onclick="handleEnrollOrBuyClick()">
+                        <i class="fa-solid fa-bolt me-2"></i> Buy Course (₹${currentClassData ? currentClassData.fee : 499})
+                    </button>
+                `;
+            }
+        }
+
+        // 3. Load Course Videos (Access Control Checked on Backend)
+        async function loadCourseVideos() {
+            const user = getCurrentUser();
+            const emailParam = user ? `?studentEmail=${encodeURIComponent(user.email)}` : '';
+
+            try {
+                const res = await fetch(`${API_BASE}/classes/${currentClassId}/videos${emailParam}`);
+                if (!res.ok) throw new Error('Failed to load videos');
+
+                const videos = await res.json();
+                currentLessons = videos;
+                renderLessonsPlaylist(videos);
+
+                // Play first available video by default
+                if (videos.length > 0) {
+                    selectLesson(videos[0]);
+                }
+
+                // Update Access Status Badge
+                const isFree = (currentClassData && (currentClassData.fee === null || currentClassData.fee === 0));
+                const badgeEl = document.getElementById('accessStatusBadge');
+                if (isFree || isEnrolled) {
+                    badgeEl.innerHTML = `<span class="badge bg-success"><i class="fa-solid fa-lock-open me-1"></i>All 4 Lessons Unlocked</span>`;
+                } else {
+                    badgeEl.innerHTML = `<span class="badge bg-warning text-dark"><i class="fa-solid fa-lock me-1"></i>1 Preview • 3 Locked</span>`;
+                }
+            } catch (err) {
+                console.error('Error loading course videos:', err);
+                document.getElementById('lessonsListContainer').innerHTML = `<p class="text-danger small">Error loading lessons.</p>`;
+            }
+        }
+
+        function renderLessonsPlaylist(videos) {
+            const container = document.getElementById('lessonsListContainer');
+            if (!videos || videos.length === 0) {
+                container.innerHTML = `<p class="text-muted small">No video lessons configured for this course yet.</p>`;
+                return;
+            }
+
+            container.innerHTML = videos.map((v, idx) => {
+                const isLocked = v.isLocked;
+                const icon = isLocked 
+                    ? '<i class="fa-solid fa-lock text-warning fa-lg me-2"></i>' 
+                    : '<i class="fa-solid fa-circle-play text-primary fa-lg me-2"></i>';
+                const statusBadge = isLocked 
+                    ? '<span class="badge bg-warning text-dark small">Locked 🔒</span>' 
+                    : (v.isFreePreview ? '<span class="badge bg-info text-white small">Free Preview ▶</span>' : '<span class="badge bg-success small">Available ✓</span>');
+
+                return `
+                    <div class="lesson-item ${isLocked ? 'locked' : ''} ${idx === 0 ? 'active' : ''}" 
+                         id="lessonItem_${v.id}" 
+                         onclick="onLessonClick(${v.id})">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <span class="small fw-bold text-dark">${icon} Lesson ${v.lessonNumber || (idx + 1)}</span>
+                            ${statusBadge}
+                        </div>
+                        <h6 class="mb-1 text-dark fw-semibold small">${v.title}</h6>
+                        <div class="d-flex justify-content-between text-muted small">
+                            <span>${v.duration || '15 Mins'}</span>
+                            <span class="text-primary">${isLocked ? 'Click to Unlock' : 'Watch Now'}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // When a user clicks a lesson
+        function onLessonClick(videoId) {
+            const video = currentLessons.find(v => v.id === videoId);
+            if (!video) return;
+
+            // Highlight in playlist
+            document.querySelectorAll('.lesson-item').forEach(el => el.classList.remove('active'));
+            const activeEl = document.getElementById(`lessonItem_${videoId}`);
+            if (activeEl) activeEl.classList.add('active');
+
+            if (video.isLocked) {
+                // Show locked video view
+                showLockedVideoNotice(video);
+            } else {
+                // Play the video
+                selectLesson(video);
+            }
+        }
+
+        function selectLesson(video) {
+            // Hide locked notice, show player
+            document.getElementById('lockedVideoNotice').classList.add('d-none');
+            document.getElementById('videoPlayerBox').classList.remove('d-none');
+
+            const player = document.getElementById('courseVideoPlayer');
+            const source = document.getElementById('videoSource');
+
+            if (video.videoUrl) {
+                source.src = video.videoUrl;
+                player.load();
+            }
+
+            document.getElementById('activeLessonBadge').textContent = `Lesson ${video.lessonNumber}`;
+            document.getElementById('activeLessonTitle').textContent = video.title;
+            document.getElementById('activeLessonDesc').textContent = video.description || '';
+            document.getElementById('activeLessonDuration').textContent = video.duration || '15 Mins';
+        }
+
+        function showLockedVideoNotice(video) {
+            document.getElementById('videoPlayerBox').classList.add('d-none');
+            document.getElementById('lockedVideoNotice').classList.remove('d-none');
+
+            document.getElementById('lockedNoticeMessage').innerHTML = `
+                <strong>${video.title}</strong> is locked.<br>
+                Purchase this course to unlock all 4 lessons, video files, and mentor Q&amp;A!
+            `;
+            document.getElementById('activeLessonBadge').textContent = `Lesson ${video.lessonNumber} (Locked)`;
+            document.getElementById('activeLessonTitle').textContent = `${video.title} 🔒`;
+            document.getElementById('activeLessonDesc').textContent = 'This lesson is locked. Purchase this course to unlock all 4 lessons.';
+        }
+
+        // 4. Handle Enroll / Buy Button
+        function handleEnrollOrBuyClick() {
+            const user = getCurrentUser();
+            if (!user) {
+                // Prompt sign in
+                showNotification('Please sign in or create an account to enroll.', 'error');
+                setTimeout(() => {
+                    window.location.href = `login.html?redirect=course-detail.html?id=${currentClassId}`;
+                }, 800);
+                return;
+            }
+
+            const isFree = (currentClassData && (currentClassData.fee === null || currentClassData.fee === 0));
+
+            if (isFree) {
+                // Free course instant enrollment
+                executeFreeEnrollment(user);
+            } else {
+                // Open Demo Payment Checkout Modal
+                openDemoPaymentModal();
+            }
+        }
+
+        async function executeFreeEnrollment(user) {
+            try {
+                const res = await fetch(`${API_BASE}/enrollments`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        studentName: user.name,
+                        studentEmail: user.email,
+                        studentPhone: user.phone || '+91 9876543210',
+                        classId: currentClassId,
+                        paymentMethod: 'Free Enrollment',
+                        amountPaid: 0.0
+                    })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    showNotification('Enrolled in Free Course successfully! All 4 lessons unlocked.', 'success');
+                    isEnrolled = true;
+                    updateActionButton(true, true);
+                    loadCourseVideos();
+                } else {
+                    showNotification(data.error || 'Enrollment failed.', 'error');
+                }
+            } catch (e) {
+                showNotification('Network error.', 'error');
+            }
+        }
+
+        function openDemoPaymentModal() {
+            const user = getCurrentUser();
+            if (!user) {
+                window.location.href = `login.html?redirect=course-detail.html?id=${currentClassId}`;
+                return;
+            }
+
+            document.getElementById('payModalCourseName').textContent = currentClassData ? currentClassData.name : 'Course';
+            document.getElementById('payModalStudentName').textContent = user.name;
+            document.getElementById('payModalAmount').textContent = `₹${currentClassData ? currentClassData.fee : 499}`;
+
+            const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('demoPaymentModal'));
+            modal.show();
+        }
+
+        function updatePaymentFields(method) {
+            const upiBox = document.getElementById('upiFieldsContainer');
+            const cardBox = document.getElementById('cardFieldsContainer');
+            const netBox = document.getElementById('netFieldsContainer');
+
+            upiBox.classList.add('d-none');
+            cardBox.classList.add('d-none');
+            netBox.classList.add('d-none');
+
+            if (method === 'UPI') {
+                upiBox.classList.remove('d-none');
+            } else if (method === 'Card') {
+                cardBox.classList.remove('d-none');
+            } else if (method === 'Net') {
+                netBox.classList.remove('d-none');
+            }
+        }
+
+        function setupPaymentForm() {
+            const form = document.getElementById('demoPaymentForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const user = getCurrentUser();
+                const btn = document.getElementById('submitDemoPaymentBtn');
+                const selectedMethod = document.querySelector('input[name="payMethod"]:checked')?.value || 'UPI';
+
+                btn.disabled = true;
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing Demo Payment...';
+
+                try {
+                    const res = await fetch(`${API_BASE}/enrollments/purchase`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            studentName: user.name,
+                            studentEmail: user.email,
+                            studentPhone: user.phone || '+91 9876543210',
+                            classId: currentClassId,
+                            paymentMethod: selectedMethod,
+                            amountPaid: currentClassData ? currentClassData.fee : 499
+                        })
+                    });
+
+                    const data = await res.json();
+
+                    if (res.ok) {
+                        // Close Payment Modal
+                        const payModal = bootstrap.Modal.getInstance(document.getElementById('demoPaymentModal'));
+                        if (payModal) payModal.hide();
+
+                        // Populate Success Modal
+                        document.getElementById('successCourseName').textContent = data.courseName || currentClassData.name;
+                        document.getElementById('successAmount').textContent = `₹${data.amountPaid || currentClassData.fee}`;
+                        document.getElementById('successTxnId').textContent = data.transactionId || 'TXN-ART-SUCCESS';
+
+                        // Show Success Modal
+                        const successModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('paymentSuccessModal'));
+                        successModal.show();
+
+                        // Update state & reload videos
+                        isEnrolled = true;
+                        updateActionButton(true, false);
+                        loadCourseVideos();
+                    } else {
+                        showNotification(data.error || 'Demo payment failed.', 'error');
+                    }
+                } catch (err) {
+                    showNotification('Network error processing demo payment.', 'error');
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-check-circle me-2"></i>Confirm Demo Payment';
+                }
+            });
+        }
+
+        function closeSuccessAndStartLearning() {
+            const successModal = bootstrap.Modal.getInstance(document.getElementById('paymentSuccessModal'));
+            if (successModal) successModal.hide();
+
+            // Scroll up to video player
+            document.getElementById('videoPlayerBox').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 5. Questions / Q&A Section
+        async function loadQuestions() {
+            const container = document.getElementById('questionsListContainer');
+            try {
+                const res = await fetch(`${API_BASE}/questions/class/${currentClassId}`);
+                if (!res.ok) throw new Error('Failed to load questions');
+                const questions = await res.json();
+
+                if (!questions || questions.length === 0) {
+                    container.innerHTML = `<p class="text-muted small">No questions asked yet. Be the first to ask!</p>`;
+                    return;
+                }
+
+                container.innerHTML = questions.map(q => `
+                    <div class="p-3 bg-light rounded-3 border">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <strong class="text-dark small"><i class="fa-solid fa-user-circle text-primary me-1"></i>${q.studentName}</strong>
+                            <span class="text-muted" style="font-size: 0.75rem;">${q.askedDate || 'Recent'}</span>
+                        </div>
+                        <p class="mb-2 text-dark small fw-medium">${q.questionText}</p>
+                        ${q.answerText ? `
+                            <div class="p-2 bg-white rounded-2 border-start border-3 border-success small text-muted">
+                                <strong class="d-block text-success" style="font-size: 0.8rem;"><i class="fa-solid fa-reply me-1"></i>Instructor Response:</strong>
+                                ${q.answerText}
+                            </div>
+                        ` : '<span class="badge bg-warning-subtle text-warning border small">Awaiting mentor reply...</span>'}
+                    </div>
+                `).join('');
+            } catch (e) {
+                console.error('Questions error:', e);
+            }
+        }
+
+        function setupQuestionForm() {
+            const user = getCurrentUser();
+            if (user) {
+                document.getElementById('qStudentName').value = user.name || '';
+                document.getElementById('qStudentEmail').value = user.email || '';
+            }
+
+            const form = document.getElementById('askQuestionForm');
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const name = document.getElementById('qStudentName').value.trim();
+                const email = document.getElementById('qStudentEmail').value.trim();
+                const questionText = document.getElementById('qQuestionText').value.trim();
+                const btn = document.getElementById('askQuestionSubmitBtn');
+
+                btn.disabled = true;
+
+                try {
+                    const res = await fetch(`${API_BASE}/questions`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            classId: currentClassId,
+                            studentName: name,
+                            studentEmail: email,
+                            questionText: questionText
+                        })
+                    });
+
+                    if (res.ok) {
+                        showNotification('Question submitted! Your mentor will reply soon.', 'success');
+                        document.getElementById('qQuestionText').value = '';
+                        loadQuestions();
+                    } else {
+                        showNotification('Failed to submit question.', 'error');
+                    }
+                } catch (err) {
+                    showNotification('Server communication error.', 'error');
+                } finally {
+                    btn.disabled = false;
+                }
+            });
+        }
+
+        // 6. Recommended Art Supplies by Category
+        function renderSupplies(category) {
+            const grid = document.getElementById('courseSuppliesGrid');
+            if (!grid) return;
+
+            const cat = (category || '').toLowerCase();
+            let supplies = [];
+
+            if (cat.includes('paint')) {
+                supplies = [
+                    { name: 'Watercolor / Acrylic Paint Set', desc: 'Primary pigments with high lightfastness rating.', icon: 'fa-palette', color: 'text-danger' },
+                    { name: 'Synthetic Bristle Brushes', desc: 'Round (#2, #6) and Flat (#1/2, #1 inch) wash brushes.', icon: 'fa-paintbrush', color: 'text-primary' },
+                    { name: 'Canvas Board / 300 GSM Paper', desc: 'Pre-stretched canvas or heavy cotton cold-pressed paper.', icon: 'fa-file', color: 'text-warning' },
+                    { name: 'Mixing Palette & Water Cup', desc: 'Slanted well palette for smooth gradient blending.', icon: 'fa-glass-water', color: 'text-info' }
+                ];
+            } else if (cat.includes('sketch')) {
+                supplies = [
+                    { name: 'Graphite Pencils (HB, 2B, 4B, 6B)', desc: 'High-quality grading pencils for outlines & deep darks.', icon: 'fa-pencil', color: 'text-primary' },
+                    { name: 'Heavy Sketchbook (140+ GSM)', desc: 'Acid-free cartridge paper that withstands shading.', icon: 'fa-book-open', color: 'text-success' },
+                    { name: 'Kneaded Eraser & Mono Zero', desc: 'Lifts graphite gently without damaging paper fibers.', icon: 'fa-eraser', color: 'text-danger' },
+                    { name: 'Paper Blending Stumps (Tortillons)', desc: 'For smooth facial tones and realistic soft shadows.', icon: 'fa-wand-magic', color: 'text-warning' }
+                ];
+            } else if (cat.includes('doodle')) {
+                supplies = [
+                    { name: 'Black Fineliner Pens (0.3 & 0.5)', desc: 'Waterproof pigment ink that will not smudge.', icon: 'fa-pen-nib', color: 'text-dark' },
+                    { name: 'Smooth Unruled Notebook', desc: 'Bright white paper with zero texture for clean lines.', icon: 'fa-book', color: 'text-primary' },
+                    { name: 'Colored Gel Pens / Dual Markers', desc: 'Vibrant highlight accents and character color fills.', icon: 'fa-highlighter', color: 'text-success' },
+                    { name: 'Geometric Ruler & Stencil', desc: 'Helpful for symmetrical mandala circles and borders.', icon: 'fa-compass', color: 'text-info' }
+                ];
+            } else { // Pastel
+                supplies = [
+                    { name: 'Soft Pastels Set (24+ Shades)', desc: 'Velvety rich chalk pastels with high blendability.', icon: 'fa-sun', color: 'text-warning' },
+                    { name: 'Textured Pastel Paper', desc: 'Sand-grained paper tooth designed to hold pigments.', icon: 'fa-file-lines', color: 'text-danger' },
+                    { name: 'Silicone Blending Tools & Wipes', desc: 'Finger-friendly blending without muddying gradients.', icon: 'fa-hand', color: 'text-primary' },
+                    { name: 'Workable Art Fixative Spray', desc: 'Locks finished pastel dust safely to the surface.', icon: 'fa-spray-can', color: 'text-info' }
+                ];
+            }
+
+            grid.innerHTML = supplies.map(s => `
+                <div class="col-md-3 col-sm-6">
+                    <div class="supply-check-item">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="fa-solid ${s.icon} ${s.color} fa-lg"></i>
+                            <h6 class="mb-0 fw-bold text-dark small">${s.name}</h6>
+                        </div>
+                        <p class="text-muted small mb-0">${s.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 7. Load Reviews for this class
+        async function loadCourseReviews() {
+            const container = document.getElementById('courseReviewsRow');
+            try {
+                const res = await fetch(`${API_BASE}/reviews`);
+                if (!res.ok) return;
+                const allReviews = await res.json();
+                const matched = allReviews.filter(r => currentClassData && r.className && r.className.toLowerCase().includes(currentClassData.name.toLowerCase()));
+
+                const displayReviews = matched.length > 0 ? matched : allReviews.slice(0, 3);
+
+                container.innerHTML = displayReviews.map(r => `
+                    <div class="col-md-4">
+                        <div class="review-card">
+                            <div class="star-rating mb-2">${getStarRatingHtml(r.rating)}</div>
+                            <p class="review-comment">"${r.comment}"</p>
+                            <div class="d-flex align-items-center gap-2 mt-auto pt-2 border-top">
+                                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center text-primary fw-bold" style="width: 34px; height: 34px;">
+                                    ${r.studentName ? r.studentName.charAt(0).toUpperCase() : 'S'}
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold text-dark small">${r.studentName}</h6>
+                                    <span class="text-muted" style="font-size: 0.75rem;">Verified Student</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (e) {
+                console.error('Reviews load error:', e);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTIST HUB - Discover. Learn. Create.</title>
+    <!-- Google Fonts: Poppins & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ================================================================
+         NAVIGATION BAR
+         ================================================================ -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-icon"><i class="fa-solid fa-palette"></i></span>
+                <div>
+                    <span class="fw-bold tracking-wide">ARTIST HUB</span>
+                    <span class="d-block small text-muted font-sans" style="font-size: 0.65rem; letter-spacing: 1px;">DISCOVER • LEARN • CREATE</span>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="classes.html">Classes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="teachers.html">Teachers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <button class="btn btn-primary-custom btn-sm px-3" onclick="joinFreeDoodlingClass()">
+                            <i class="fa-solid fa-gift me-1"></i> Join Free Class
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================================================================
+         1. HERO SECTION
+         ================================================================ -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="hero-tagline"><i class="fa-solid fa-wand-magic-sparkles me-1"></i> Discover. Learn. Create.</span>
+                    <h1 class="hero-title">
+                        Ignite Your Imagination With <span>Master Artists</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Artist Hub connects curious learners with verified fine art mentors. Learn painting, sketching, pastel art, and creative doodling through live online sessions or offline workshops.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="classes.html" class="btn btn-primary-custom">
+                            <i class="fa-solid fa-compass me-2"></i>Explore Classes
+                        </a>
+                        <a href="teachers.html" class="btn btn-outline-custom">
+                            <i class="fa-solid fa-chalkboard-user me-2"></i>Meet Our Teachers
+                        </a>
+                        <button class="btn btn-dark rounded-pill px-4" onclick="joinFreeDoodlingClass()">
+                            <i class="fa-solid fa-bolt text-warning me-2"></i>Join Free Class
+                        </button>
+                    </div>
+
+                    <!-- Hero Stats -->
+                    <div class="hero-stats-box">
+                        <div class="stat-item">
+                            <h4>5+</h4>
+                            <p>Master Mentors</p>
+                        </div>
+                        <div class="stat-item border-start ps-3">
+                            <h4>9+</h4>
+                            <p>Curated Courses</p>
+                        </div>
+                        <div class="stat-item border-start ps-3">
+                            <h4>4.9 ★</h4>
+                            <p>Student Rating</p>
+                        </div>
+                        <div class="stat-item border-start ps-3">
+                            <h4>₹0</h4>
+                            <p>Free Class</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=800&q=80" alt="Artist Painting Studio" class="img-fluid">
+                        <div class="hero-badge-float">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center" style="width: 44px; height: 44px;">
+                                <i class="fa-solid fa-check fa-lg"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">100% Practical & Beginner-Friendly</h6>
+                                <small class="text-muted">Live Guidance & Portfolio Reviews</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================================================================
+         2. FEATURED CLASSES SECTION
+         ================================================================ -->
+    <section class="section-padding bg-white">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Curated For You</span>
+                <h2 class="section-title">Featured Art Classes</h2>
+                <p class="section-desc">Handpicked courses designed to elevate your artistic expression step-by-step.</p>
+            </div>
+
+            <div class="row" id="featuredClassesRow">
+                <!-- Dynamically populated via JS from /api/classes -->
+                <div class="col-12 text-center py-4">
+                    <div class="spinner-border text-primary" role="status"></div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="classes.html" class="btn btn-outline-custom">
+                    View All Classes <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         3. POPULAR TEACHERS SECTION
+         ================================================================ -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Learn From The Best</span>
+                <h2 class="section-title">Meet Our Popular Art Mentors</h2>
+                <p class="section-desc">Distinguished fine arts graduates, studio masters, and passionate educators.</p>
+            </div>
+
+            <div class="row" id="popularTeachersRow">
+                <!-- Dynamically populated via JS from /api/teachers -->
+                <div class="col-12 text-center py-4">
+                    <div class="spinner-border text-primary" role="status"></div>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="teachers.html" class="btn btn-outline-custom">
+                    Explore All Instructors <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         4. BEGINNER-FRIENDLY CLASSES SECTION
+         ================================================================ -->
+    <section class="section-padding bg-white">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Zero Experience Required</span>
+                <h2 class="section-title">Beginner-Friendly Classes</h2>
+                <p class="section-desc">Never held a brush or pencil? These calm, supportive classes are built specifically for absolute newcomers.</p>
+            </div>
+
+            <div class="row" id="beginnerClassesRow">
+                <!-- Dynamically loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         5 & 6. ONLINE & OFFLINE CLASSES ROW
+         ================================================================ -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row g-4 align-items-stretch">
+                <!-- Online Classes Highlight -->
+                <div class="col-lg-6">
+                    <div class="p-4 p-md-5 rounded-4 h-100 bg-white border shadow-sm">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-3 p-3 bg-primary bg-opacity-10 text-primary">
+                                <i class="fa-solid fa-laptop-code fa-2x"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 mb-0 fw-bold">Live Online Classes</h3>
+                                <small class="text-muted">Learn from the comfort of your home</small>
+                            </div>
+                        </div>
+                        <p class="text-muted">Interactive live classes with two-way camera feeds, close-up camera angles on paper/canvas, step-by-step guidance, and real-time mentor corrections.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Attend from any city across India & abroad</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Recorded summaries and assignment reviews</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Small batch sizes for individual attention</li>
+                        </ul>
+                        <a href="classes.html?mode=Online" class="btn btn-primary-custom btn-sm">Explore Online Classes</a>
+                    </div>
+                </div>
+
+                <!-- Offline Classes Highlight -->
+                <div class="col-lg-6">
+                    <div class="p-4 p-md-5 rounded-4 h-100 bg-white border shadow-sm">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="rounded-3 p-3 bg-warning bg-opacity-10 text-warning">
+                                <i class="fa-solid fa-palette fa-2x"></i>
+                            </div>
+                            <div>
+                                <h3 class="h4 mb-0 fw-bold">Hands-On Offline Studios</h3>
+                                <small class="text-muted">Physical studios in Mumbai, Bengaluru, Pune & Delhi</small>
+                            </div>
+                        </div>
+                        <p class="text-muted">Immerse yourself in authentic art studio spaces with natural light, professional easels, tactile physical mediums, and community workshops.</p>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Physical studio easels and materials available</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Direct hands-on posture & stroke correction</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i>Meet fellow creative artists in your city</li>
+                        </ul>
+                        <a href="classes.html?mode=Offline" class="btn btn-outline-custom btn-sm">Find Offline Studios</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         7. FREE BEGINNER CLASS SECTION: "Start Your Art Journey"
+         ================================================================ -->
+    <section class="section-padding pt-0">
+        <div class="container">
+            <div class="free-class-banner">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 mb-4 mb-lg-0">
+                        <span class="free-badge-sparkle">
+                            <i class="fa-solid fa-sparkles"></i> START YOUR ART JOURNEY • 100% FREE
+                        </span>
+                        <h2 class="display-6 fw-bold text-white mb-3">Beginner Doodling Class – ₹0 / FREE</h2>
+                        <p class="text-light opacity-75 mb-4 fs-6" style="max-width: 650px;">
+                            Unwind, de-stress, and discover the joy of drawing! No previous art experience or expensive supplies needed. Just grab any plain paper and a regular black pen to join mentor Pooja Kulkarni.
+                        </p>
+                        <div class="row g-3 mb-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center gap-2 text-white-50">
+                                    <i class="fa-solid fa-circle-check text-success"></i>
+                                    <span>No previous experience required</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center gap-2 text-white-50">
+                                    <i class="fa-solid fa-circle-check text-success"></i>
+                                    <span>Beginner friendly & supportive</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center gap-2 text-white-50">
+                                    <i class="fa-solid fa-circle-check text-success"></i>
+                                    <span>Live Interactive Online Session</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center gap-2 text-white-50">
+                                    <i class="fa-solid fa-circle-check text-success"></i>
+                                    <span>Basic doodling & simple exercises</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-warning btn-lg rounded-pill px-5 fw-bold text-dark shadow-lg" onclick="joinFreeDoodlingClass()">
+                            <i class="fa-solid fa-gift me-2"></i> Join Free Class
+                        </button>
+                    </div>
+
+                    <div class="col-lg-4 text-center">
+                        <div class="p-4 rounded-4 bg-white bg-opacity-10 backdrop-blur border border-white border-opacity-25 text-white">
+                            <i class="fa-solid fa-graduation-cap fa-3x text-warning mb-3"></i>
+                            <h5 class="fw-bold">Free Enrollment Open</h5>
+                            <p class="small text-white-50 mb-3">Instant seat confirmation. Zero credit card or payment needed.</p>
+                            <div class="badge bg-success p-2 px-3 fs-6">Fee: ₹0 (FREE)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         8. RECOMMENDED ART SUPPLIES SECTION
+         ================================================================ -->
+    <section class="section-padding bg-white">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Recommended Tools</span>
+                <h2 class="section-title">Recommended Art Supplies</h2>
+                <p class="section-desc">Equip yourself with the right materials handpicked by our mentors for each artistic discipline.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Sketching -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="supply-card">
+                        <div class="supply-icon bg-primary bg-opacity-10 text-primary">
+                            <i class="fa-solid fa-pencil"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">For Sketching</h5>
+                        <ul class="supply-list">
+                            <li><i class="fa-solid fa-angle-right"></i> HB Pencil (Light outlines)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> 2B Pencil (Mid-shading)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> 4B Pencil (Deep shadows)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Sketchbook (140+ GSM)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Kneaded / Mono Eraser</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Painting -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="supply-card">
+                        <div class="supply-icon bg-info bg-opacity-10 text-info">
+                            <i class="fa-solid fa-paintbrush"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">For Painting</h5>
+                        <ul class="supply-list">
+                            <li><i class="fa-solid fa-angle-right"></i> Stretched Canvas / Board</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Acrylic Paints (Primary set)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Flat & Round Brushes</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Mixing Palette</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Water Cup & Rag Cloth</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pastel -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="supply-card">
+                        <div class="supply-icon bg-warning bg-opacity-10 text-warning">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">For Pastel</h5>
+                        <ul class="supply-list">
+                            <li><i class="fa-solid fa-angle-right"></i> Soft Pastels (24/36 set)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Textured Pastel Paper</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Blending Stump (Tortillon)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Art Fixative Spray</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Wet Wipes for fingers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Doodling -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="supply-card">
+                        <div class="supply-icon bg-success bg-opacity-10 text-success">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">For Doodling</h5>
+                        <ul class="supply-list">
+                            <li><i class="fa-solid fa-angle-right"></i> Black Fineliner (0.3 & 0.5)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Plain White Sketchbook</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Gel Pens (Colored set)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Ruler / Compass (for mandalas)</li>
+                            <li><i class="fa-solid fa-angle-right"></i> Dual Tip Brush Markers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         9. ART VIDEOS SECTION
+         ================================================================ -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-subtitle">Learn By Watching</span>
+                <h2 class="section-title">Educational Art Tutorials</h2>
+                <p class="section-desc">Watch quick technique demonstrations and master tips from our community mentors.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Video 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-thumbnail-holder">
+                            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80" alt="Watercolor Blending Tutorial">
+                            <a href="https://www.youtube.com/watch?v=1s58rW0_LN4" target="_blank" class="play-button-overlay text-decoration-none">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge-category badge-painting">Painting</span>
+                                <small class="text-muted"><i class="fa-regular fa-clock me-1"></i>12 Mins</small>
+                            </div>
+                            <h5 class="fw-bold text-dark">Watercolor Wet-on-Wet Blending</h5>
+                            <p class="text-muted small mb-3">Master smooth sunset sky gradients using controlled pigment flow and water density.</p>
+                            <a href="https://www.youtube.com/watch?v=1s58rW0_LN4" target="_blank" class="btn btn-sm btn-outline-custom">
+                                <i class="fa-brands fa-youtube me-1"></i>Watch Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-thumbnail-holder">
+                            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Pencil Shading Techniques">
+                            <a href="https://www.youtube.com/watch?v=OezMavBqWXc" target="_blank" class="play-button-overlay text-decoration-none">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge-category badge-sketching">Sketching</span>
+                                <small class="text-muted"><i class="fa-regular fa-clock me-1"></i>15 Mins</small>
+                            </div>
+                            <h5 class="fw-bold text-dark">5 Essential Pencil Shading Techniques</h5>
+                            <p class="text-muted small mb-3">Hatching, cross-hatching, stippling, circular blending, and rendering 3D sphere spheres.</p>
+                            <a href="https://www.youtube.com/watch?v=OezMavBqWXc" target="_blank" class="btn btn-sm btn-outline-custom">
+                                <i class="fa-brands fa-youtube me-1"></i>Watch Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="video-card">
+                        <div class="video-thumbnail-holder">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Relaxing Doodling">
+                            <a href="https://www.youtube.com/watch?v=Qc1jNqIq29s" target="_blank" class="play-button-overlay text-decoration-none">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-body">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="badge-category badge-doodling">Doodling</span>
+                                <small class="text-muted"><i class="fa-regular fa-clock me-1"></i>10 Mins</small>
+                            </div>
+                            <h5 class="fw-bold text-dark">Mindful Doodling & Simple Mandalas</h5>
+                            <p class="text-muted small mb-3">Stress-relief line art patterns that anyone can draw within 10 minutes using a gel pen.</p>
+                            <a href="https://www.youtube.com/watch?v=Qc1jNqIq29s" target="_blank" class="btn btn-sm btn-outline-custom">
+                                <i class="fa-brands fa-youtube me-1"></i>Watch Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         10. FOOTER
+         ================================================================ -->
+    <footer class="footer-custom">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="footer-brand d-flex align-items-center gap-2">
+                        <span class="brand-icon"><i class="fa-solid fa-palette"></i></span>
+                        <span>ARTIST HUB</span>
+                    </div>
+                    <p class="small text-light opacity-75">
+                        A Java &amp; Spring Boot-based learning and teaching platform connecting aspiring artists with experienced mentors across India.
+                    </p>
+                    <p class="small text-warning">
+                        <i class="fa-solid fa-award me-1"></i> College Mini Project • Java 17 + Spring Boot + MySQL
+                    </p>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6 class="fw-bold text-white mb-3">Navigation</h6>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="classes.html">All Classes</a></li>
+                        <li><a href="teachers.html">Art Mentors</a></li>
+                        <li><a href="schedule.html">Timetable</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="about.html">About Platform</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h6 class="fw-bold text-white mb-3">Art Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="classes.html?category=Painting">Acrylic & Oil Painting</a></li>
+                        <li><a href="classes.html?category=Sketching">Pencil & Charcoal Sketching</a></li>
+                        <li><a href="classes.html?category=Pastel">Soft & Oil Pastels</a></li>
+                        <li><a href="classes.html?category=Doodling">Creative Doodling (Free)</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold text-white mb-3">Class Locations</h6>
+                    <p class="small text-light opacity-75 mb-2">
+                        <i class="fa-solid fa-location-dot text-danger me-2"></i> Mumbai • Bengaluru • Pune • New Delhi
+                    </p>
+                    <p class="small text-light opacity-75">
+                        <i class="fa-solid fa-video text-primary me-2"></i> Live Zoom Interactive Studio Worldwide
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom text-center">
+                <p class="mb-0">© 2026 Artist Hub. Built for College Java Mini Project with Spring Boot &amp; MySQL. Discover. Learn. Create.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ================================================================
+         REUSABLE ENROLLMENT MODAL
+         ================================================================ -->
+    <div class="modal fade" id="enrollmentModal" tabindex="-1" aria-labelledby="enrollmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title fw-bold" id="enrollmentModalLabel">Enroll in Art Class</h5>
+                        <p class="small text-muted mb-0">Fill your details below to reserve your seat</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-light border d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <span class="small text-muted d-block">Selected Course</span>
+                            <strong id="enrollmentModalClassTitle" class="text-dark">Art Class</strong>
+                        </div>
+                        <div id="enrollmentModalClassFee">
+                            <span class="badge bg-success">FREE</span>
+                        </div>
+                    </div>
+
+                    <form id="enrollmentForm">
+                        <input type="hidden" id="enrollmentClassId" value="">
+                        <div class="mb-3">
+                            <label for="studentName" class="form-label fw-semibold small">Full Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control form-control-custom" id="studentName" placeholder="e.g. Priyam Yana" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="studentEmail" class="form-label fw-semibold small">Email Address <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control form-control-custom" id="studentEmail" placeholder="e.g. student@example.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="studentPhone" class="form-label fw-semibold small">Phone Number <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control form-control-custom" id="studentPhone" placeholder="e.g. +91 9876543210" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary-custom" id="enrollmentSubmitBtn">
+                                <i class="fa-solid fa-check me-2"></i>Confirm Enrollment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- App Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/enrollment.js"></script>
+
+    <!-- Inline Homepage Dynamic Loader -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Load Featured Classes (first 3)
+            try {
+                const res = await fetch(`${API_BASE}/classes`);
+                if (res.ok) {
+                    const classes = await res.json();
+                    
+                    // Featured row (first 3)
+                    const featuredRow = document.getElementById('featuredClassesRow');
+                    if (featuredRow) {
+                        featuredRow.innerHTML = classes.slice(0, 3).map(c => `
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="art-card">
+                                    <div class="card-img-holder">
+                                        <img src="${getClassCategoryImg(c.category)}" alt="${c.name}">
+                                        <div class="card-badge-top">${getCategoryBadge(c.category)}</div>
+                                        <div class="card-mode-top">${getModeBadge(c.mode)}</div>
+                                    </div>
+                                    <div class="art-card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <span class="badge bg-light text-dark border">${c.level}</span>
+                                            <span class="text-warning small"><i class="fa-solid fa-star me-1"></i>${c.teacher ? c.teacher.rating : '4.9'}</span>
+                                        </div>
+                                        <h5 class="class-title">${c.name}</h5>
+                                        <p class="class-desc">${c.description || ''}</p>
+                                        <div class="class-meta">
+                                            <span><i class="fa-regular fa-calendar text-primary"></i> ${c.date}</span>
+                                            <span><i class="fa-regular fa-clock text-primary"></i> ${c.duration}</span>
+                                        </div>
+                                        <div class="card-bottom-row">
+                                            ${formatFee(c.fee)}
+                                            <div class="d-flex gap-2">
+                                                <a href="course-detail.html?id=${c.id}" class="btn btn-sm btn-outline-primary rounded-pill">
+                                                    <i class="fa-solid fa-play-circle me-1"></i>Lessons
+                                                </a>
+                                                <button class="btn btn-sm btn-primary-custom" onclick="openEnrollmentModal(${c.id}, '${c.name.replace(/'/g, "\\'")}', ${c.fee})">
+                                                    ${c.fee === 0 ? 'Join Free' : 'Join'}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+
+                    // Beginner-friendly row (level == 'Beginner')
+                    const beginnerRow = document.getElementById('beginnerClassesRow');
+                    if (beginnerRow) {
+                        const beginnerClasses = classes.filter(c => (c.level || '').toLowerCase() === 'beginner');
+                        beginnerRow.innerHTML = beginnerClasses.slice(0, 3).map(c => `
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="art-card">
+                                    <div class="card-img-holder">
+                                        <img src="${getClassCategoryImg(c.category)}" alt="${c.name}">
+                                        <div class="card-badge-top">${getCategoryBadge(c.category)}</div>
+                                        <div class="card-mode-top">${getModeBadge(c.mode)}</div>
+                                    </div>
+                                    <div class="art-card-body">
+                                        <span class="badge bg-success bg-opacity-10 text-success fw-bold mb-2 align-self-start">Beginner Friendly</span>
+                                        <h5 class="class-title">${c.name}</h5>
+                                        <p class="class-desc">${c.description || ''}</p>
+                                        <div class="card-bottom-row">
+                                            ${formatFee(c.fee)}
+                                            <div class="d-flex gap-2">
+                                                <a href="course-detail.html?id=${c.id}" class="btn btn-sm btn-outline-primary rounded-pill">
+                                                    <i class="fa-solid fa-play-circle me-1"></i>Lessons
+                                                </a>
+                                                <button class="btn btn-sm btn-primary-custom" onclick="openEnrollmentModal(${c.id}, '${c.name.replace(/'/g, "\\'")}', ${c.fee})">
+                                                    ${c.fee === 0 ? 'Join Free' : 'Join'}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            } catch (e) {
+                console.error('Featured classes load error:', e);
+            }
+
+            // Load Popular Teachers (first 3)
+            try {
+                const res = await fetch(`${API_BASE}/teachers`);
+                if (res.ok) {
+                    const teachers = await res.json();
+                    const teacherRow = document.getElementById('popularTeachersRow');
+                    if (teacherRow) {
+                        teacherRow.innerHTML = teachers.slice(0, 3).map(t => `
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="teacher-card">
+                                    <div class="teacher-avatar-wrapper">
+                                        <img src="${t.profileImage}" alt="${t.name}">
+                                    </div>
+                                    <div class="star-rating mb-2">
+                                        ${getStarRatingHtml(t.rating)}
+                                        <span class="ms-1 fw-bold text-dark small">${t.rating}</span>
+                                    </div>
+                                    <h4 class="teacher-card-name">${t.name}</h4>
+                                    <p class="teacher-card-spec">${t.specialization}</p>
+                                    <p class="teacher-card-bio">${t.bio || ''}</p>
+                                    <a href="teachers.html" class="btn btn-sm btn-outline-custom">View Profile</a>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            } catch (e) {
+                console.error('Teachers load error:', e);
+            }
+        });
+    </script>
+</body>
+</html>
