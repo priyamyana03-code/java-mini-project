@@ -360,22 +360,20 @@ public class DataInitializer implements CommandLineRunner {
         List<ArtClass> classes = artClassRepository.findAll();
         List<CourseVideo> allVideos = new ArrayList<>();
 
-        // Standard sample HTML5 video URLs that play cleanly in all browsers
-        // Easy for user to update via database or REST API later!
-        String v1 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
-        String v2 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4";
-        String v3 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
-        String v4 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4";
-
         for (ArtClass c : classes) {
             String name = c.getName();
             String cat = c.getCategory() != null ? c.getCategory() : "Art";
+
+            String lesson1Url = "Doodling".equalsIgnoreCase(cat) ? "/videos/doodling-1.mp4" : "/videos/realistic-drawing-preview.mp4";
+            String lesson2Url = "Doodling".equalsIgnoreCase(cat) ? "/videos/doodling-2.mp4" : "/videos/doodling-2.mp4";
+            String lesson3Url = "Doodling".equalsIgnoreCase(cat) ? "/videos/doodling-3.mp4" : "/videos/doodling-3.mp4";
+            String lesson4Url = "Doodling".equalsIgnoreCase(cat) ? "/videos/doodling-4.mp4" : "/videos/doodling-4.mp4";
 
             // Lesson 1 - Introduction
             allVideos.add(new CourseVideo(
                     "Lesson 1 - Introduction to " + cat + " & Core Materials",
                     "Welcome to " + name + "! In this lesson, we explore essential art supplies, work area preparation, and fundamental posture and strokes.",
-                    v1,
+                    lesson1Url,
                     1,
                     "15 Mins",
                     c
@@ -385,7 +383,7 @@ public class DataInitializer implements CommandLineRunner {
             allVideos.add(new CourseVideo(
                     "Lesson 2 - Essential Techniques & Hands-on Exercises",
                     "Deep dive into foundational techniques for " + cat + ". Learn controlled pressure, consistent transitions, and practice drills.",
-                    v2,
+                    lesson2Url,
                     2,
                     "22 Mins",
                     c
@@ -395,7 +393,7 @@ public class DataInitializer implements CommandLineRunner {
             allVideos.add(new CourseVideo(
                     "Lesson 3 - Intermediate Blending & Composition Rules",
                     "Level up with composition framing, perspective, tonal values, and delicate texturing suitable for " + name + ".",
-                    v3,
+                    lesson3Url,
                     3,
                     "28 Mins",
                     c
@@ -405,7 +403,7 @@ public class DataInitializer implements CommandLineRunner {
             allVideos.add(new CourseVideo(
                     "Lesson 4 - Final Project: Complete Artwork from Scratch",
                     "Put everything together! Step-by-step guided creation of your signature final project piece from start to varnishing/fixing.",
-                    v4,
+                    lesson4Url,
                     4,
                     "35 Mins",
                     c
