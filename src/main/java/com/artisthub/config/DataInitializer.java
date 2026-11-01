@@ -59,6 +59,9 @@ public class DataInitializer implements CommandLineRunner {
         if (courseVideoRepository.count() == 0) {
             System.out.println(">>> Initializing 4 Course Videos per class...");
             initCourseVideos();
+        } else {
+            System.out.println(">>> Checking existing course video paths...");
+            updateVideoUrlsIfNeeded();
         }
 
         // 4. Initialize Questions & Answers
@@ -361,57 +364,154 @@ public class DataInitializer implements CommandLineRunner {
         List<CourseVideo> allVideos = new ArrayList<>();
 
         for (ArtClass c : classes) {
-            String name = c.getName();
+            String name = c.getName() != null ? c.getName() : "";
             String cat = c.getCategory() != null ? c.getCategory() : "Art";
 
-            String lesson1Url = "Doodling".equalsIgnoreCase(cat) ? "/videos/doodling-1.mp4" : "/videos/realistic-drawing-preview.mp4";
-            String lesson2Url = "Doodling".equalsIgnoreCase(cat) ? "/videos/doodling-2.mp4" : "/videos/doodling-2.mp4";
-            String lesson3Url = "Doodling".equalsIgnoreCase(cat) ? "/videos/doodling-3.mp4" : "/videos/doodling-3.mp4";
-            String lesson4Url = "Doodling".equalsIgnoreCase(cat) ? "/videos/doodling-4.mp4" : "/videos/doodling-4.mp4";
-
-            // Lesson 1 - Introduction
-            allVideos.add(new CourseVideo(
-                    "Lesson 1 - Introduction to " + cat + " & Core Materials",
-                    "Welcome to " + name + "! In this lesson, we explore essential art supplies, work area preparation, and fundamental posture and strokes.",
-                    lesson1Url,
-                    1,
-                    "15 Mins",
-                    c
-            ));
-
-            // Lesson 2 - Basic Techniques
-            allVideos.add(new CourseVideo(
-                    "Lesson 2 - Essential Techniques & Hands-on Exercises",
-                    "Deep dive into foundational techniques for " + cat + ". Learn controlled pressure, consistent transitions, and practice drills.",
-                    lesson2Url,
-                    2,
-                    "22 Mins",
-                    c
-            ));
-
-            // Lesson 3 - Advanced Methods / Color & Texture
-            allVideos.add(new CourseVideo(
-                    "Lesson 3 - Intermediate Blending & Composition Rules",
-                    "Level up with composition framing, perspective, tonal values, and delicate texturing suitable for " + name + ".",
-                    lesson3Url,
-                    3,
-                    "28 Mins",
-                    c
-            ));
-
-            // Lesson 4 - Final Project
-            allVideos.add(new CourseVideo(
-                    "Lesson 4 - Final Project: Complete Artwork from Scratch",
-                    "Put everything together! Step-by-step guided creation of your signature final project piece from start to varnishing/fixing.",
-                    lesson4Url,
-                    4,
-                    "35 Mins",
-                    c
-            ));
+            if ("Beginner Doodling Class".equalsIgnoreCase(name) || "Doodling".equalsIgnoreCase(cat)) {
+                // Free Beginner Doodling Class - 4 local video lessons
+                allVideos.add(new CourseVideo(
+                        "Lesson 1 - The Visual Alphabet & Patterns",
+                        "Learn the 5 basic visual alphabet elements, pattern building, and loosening up your hand with fun doodling warmup drills.",
+                        "/videos/doodling-1.mp4",
+                        1,
+                        "10 Mins",
+                        c
+                ));
+                allVideos.add(new CourseVideo(
+                        "Lesson 2 - Reverse Engineering Doodles",
+                        "Deconstruct complex real-world objects into simple doodle shapes. Discover how to doodle any icon step-by-step.",
+                        "/videos/doodling-2.mp4",
+                        2,
+                        "12 Mins",
+                        c
+                ));
+                allVideos.add(new CourseVideo(
+                        "Lesson 3 - Doodling Things Around the Home",
+                        "Turn everyday household objects - coffee cups, plants, lamps, stationery - into delightful minimalist doodle characters.",
+                        "/videos/doodling-3.mp4",
+                        3,
+                        "15 Mins",
+                        c
+                ));
+                allVideos.add(new CourseVideo(
+                        "Lesson 4 - Doodling Random Stuff & Mandalas",
+                        "Combine all techniques to create full doodling pages, creative monster doodles, and relaxing mandala line artwork.",
+                        "/videos/doodling-4.mp4",
+                        4,
+                        "18 Mins",
+                        c
+                ));
+            } else if ("Realistic Portrait Sketching Masterclass".equalsIgnoreCase(name)) {
+                // Realistic Portrait Sketching Masterclass - Lesson 1 preview, remaining locked
+                allVideos.add(new CourseVideo(
+                        "Lesson 1 - Facial Proportions & Quick Sketch Preview",
+                        "Short preview demonstration on facial feature alignment, graphite grid sketching, and initial outline mapping.",
+                        "/videos/realistic-drawing-preview.mp4",
+                        1,
+                        "8 Secs (Preview)",
+                        c
+                ));
+                allVideos.add(new CourseVideo(
+                        "Lesson 2 - Expressive Eye Anatomy & Graphite Shading",
+                        "Master the anatomy of the human eye, tear ducts, iris highlights, realistic eyelashes, and dark graphite tones.",
+                        "/videos/realistic-drawing-preview.mp4",
+                        2,
+                        "25 Mins",
+                        c
+                ));
+                allVideos.add(new CourseVideo(
+                        "Lesson 3 - Realistic Hair Textures & Skin Undertones",
+                        "Techniques for drawing flowing hair strands, curls, skin texture blending, and subtle cheekbone chiaroscuro shadows.",
+                        "/videos/realistic-drawing-preview.mp4",
+                        3,
+                        "30 Mins",
+                        c
+                ));
+                allVideos.add(new CourseVideo(
+                        "Lesson 4 - Chiaroscuro Lighting & Master Portrait Finish",
+                        "Complete a museum-grade hyper-realistic graphite portrait from blank page to final kneaded eraser highlights and fixative.",
+                        "/videos/realistic-drawing-preview.mp4",
+                        4,
+                        "40 Mins",
+                        c
+                ));
+            } else {
+                // Other classes
+                allVideos.add(new CourseVideo(
+                        "Lesson 1 - Introduction to " + cat + " & Core Materials",
+                        "Welcome to " + name + "! In this lesson, we explore essential art supplies, work area preparation, and fundamental posture and strokes.",
+                        "/videos/doodling-1.mp4",
+                        1,
+                        "15 Mins",
+                        c
+                ));
+                allVideos.add(new CourseVideo(
+                        "Lesson 2 - Essential Techniques & Hands-on Exercises",
+                        "Deep dive into foundational techniques for " + cat + ". Learn controlled pressure, consistent transitions, and practice drills.",
+                        "/videos/doodling-2.mp4",
+                        2,
+                        "22 Mins",
+                        c
+                ));
+                allVideos.add(new CourseVideo(
+                        "Lesson 3 - Intermediate Blending & Composition Rules",
+                        "Level up with composition framing, perspective, tonal values, and delicate texturing suitable for " + name + ".",
+                        "/videos/doodling-3.mp4",
+                        3,
+                        "28 Mins",
+                        c
+                ));
+                allVideos.add(new CourseVideo(
+                        "Lesson 4 - Final Project: Complete Artwork from Scratch",
+                        "Put everything together! Step-by-step guided creation of your signature final project piece from start to varnishing/fixing.",
+                        "/videos/doodling-4.mp4",
+                        4,
+                        "35 Mins",
+                        c
+                ));
+            }
         }
 
         courseVideoRepository.saveAll(allVideos);
         System.out.println(">>> Seeded " + allVideos.size() + " video lessons (4 per course) across " + classes.size() + " classes!");
+    }
+
+    private void updateVideoUrlsIfNeeded() {
+        List<CourseVideo> allVideos = courseVideoRepository.findAll();
+        boolean changed = false;
+
+        for (CourseVideo v : allVideos) {
+            ArtClass c = v.getArtClass();
+            if (c == null) continue;
+            String className = c.getName() != null ? c.getName() : "";
+            int lessonNum = v.getLessonNumber() != null ? v.getLessonNumber() : 1;
+
+            if ("Beginner Doodling Class".equalsIgnoreCase(className)) {
+                String targetUrl = "/videos/doodling-" + lessonNum + ".mp4";
+                if (!targetUrl.equals(v.getVideoUrl())) {
+                    v.setVideoUrl(targetUrl);
+                    changed = true;
+                }
+            } else if ("Realistic Portrait Sketching Masterclass".equalsIgnoreCase(className)) {
+                if (!"/videos/realistic-drawing-preview.mp4".equals(v.getVideoUrl())) {
+                    v.setVideoUrl("/videos/realistic-drawing-preview.mp4");
+                    if (lessonNum == 1) {
+                        v.setDuration("8 Secs (Preview)");
+                    }
+                    changed = true;
+                }
+            } else {
+                if (v.getVideoUrl() != null && (v.getVideoUrl().contains("googleapis") || v.getVideoUrl().contains("Day1"))) {
+                    v.setVideoUrl("/videos/doodling-" + (lessonNum >= 1 && lessonNum <= 4 ? lessonNum : 1) + ".mp4");
+                    changed = true;
+                }
+            }
+        }
+
+        if (changed) {
+            courseVideoRepository.saveAll(allVideos);
+            System.out.println(">>> Updated existing course video paths to local static resources.");
+        }
     }
 
     private void initQuestions() {
